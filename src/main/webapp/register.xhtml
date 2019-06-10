@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p ="http://primefaces.org/ui">
+
+<h:head>
+	<title>Registration form</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h2>JSF Registration App</h2>
+		<h4>Registration form</h4>
+		<table>
+			<tr>
+				<td>First Name</td>
+				<td>
+				
+					<p:inputText label="First Name" id="fname" value="#{userBean.firstName}" 
+					required="true" title="Unesi ime"/>
+					<p:message for="fname"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td>
+					<p:inputText label="Last Name" id ="lname" value="#{userBean.lastName}"
+					required="true"/>
+					<p:message for="lname"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Sex:</td>
+				<td>
+					<p:selectOneRadio label="Sex" id="sex" value="#{userBean.sex}"
+					required="true">
+						<f:selectItem itemLabel="Male" itemValue="male"/>
+						<f:selectItem itemLabel="Female" itemValue="female"/>
+						<p:message for="sex"></p:message>
+					</p:selectOneRadio>
+				</td>
+			</tr>
+			<tr>
+				<td>Date of birth:</td>
+				<td>
+					<p:inputText label="Date of Birth" id="dob" value="#{userBean.dob}" 
+					required="true">
+						<f:convertDateTime  pattern="dd-MM-yy" />
+					</p:inputText>
+					<p:message for="dob"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>
+				<p:inputText label="Email" id="email" value="#{userBean.email}" 
+				required="true"/>
+				<p:message for="email"></p:message>
+				</td>
+			</tr>
+			<tr>
+				<td>Service Level:</td>
+				<td>
+					<p:selectOneMenu label="Service level" id="serviceLevel" value="#{userBean.servicelevel}">
+						<f:selectItem itemLabel="Medium" itemValue="medium"/>
+						<f:selectItem itemLabel="Basic" itemValue="basic"/>
+						<f:selectItem itemLabel="Premium" itemValue="premium"/>
+					</p:selectOneMenu>
+				</td>
+			</tr>
+		</table>
+		<p><h:messages /></p>
+		<p><p:commandButton value="Registruj" action="confirm?faces-redirect=true"/>
+		<p:commandButton value="Reload" action="register"/></p>
+		
+	</h:form>
+</h:body>
+
+</html>
